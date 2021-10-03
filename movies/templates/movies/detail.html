@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>title: {{movie.title}}</p>
+    <p>overview: {{movie.overview}}</p>   
+    <img src="{{movie.poster_path}}" alt="..." style="width:100px;height:100px,">
+    <hr>
+    <p><a href="{% url 'movies:update' movie.pk %}" class="btn btn-primary"> UPDATE</a></p>
+
+    <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">DELETE</button>
+    </form> 
+    <a href="{% url 'movies:index' %}">[back]</a>
+{% endblock content %}
+
+
